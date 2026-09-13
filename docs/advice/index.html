@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>諸葛亮 上疏文 — 주공께 올리는 글</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper-1:#f2e6c9;
+    --paper-2:#e9d8ab;
+    --paper-edge:#c9a86a;
+    --ink:#2b2118;
+    --ink-soft:#4a3b2a;
+    --seal-red:#9c2b21;
+    --seal-red-dark:#7a1f18;
+    --gold:#a9782f;
+    --divider:#b89a5e;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.15), transparent 40%),
+      radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.07), transparent 45%),
+      linear-gradient(180deg, var(--paper-1), var(--paper-2));
+    color:var(--ink);
+    font-family:"Noto Serif KR", serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding-block:28px;
+  }
+  .scroll{
+    width:100%;
+    max-width:820px;
+    margin:0 16px;
+    position:relative;
+    padding:0 0 40px 0;
+  }
+  .rod{
+    height:26px;
+    border-radius:13px;
+    background:
+      linear-gradient(180deg,#8a5a2b,#5e3a18 45%,#3f2510),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.15) 0 2px, transparent 2px 6px);
+    background-blend-mode:multiply, normal;
+    box-shadow:0 3px 6px rgba(0,0,0,0.35), inset 0 2px 2px rgba(255,255,255,0.25);
+    position:relative;
+    z-index:3;
+  }
+  .rod::before, .rod::after{
+    content:"";
+    position:absolute;
+    top:-4px;
+    width:20px;
+    height:34px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #b8814a, #5c3717 70%);
+    box-shadow:0 2px 5px rgba(0,0,0,0.4);
+  }
+  .rod::before{ left:-14px; }
+  .rod::after{ right:-14px; }
+  .paper{
+    background:
+      repeating-linear-gradient(180deg, rgba(150,110,50,0.05) 0px, transparent 2px, transparent 40px, rgba(150,110,50,0.05) 42px),
+      radial-gradient(circle at 15% 8%, rgba(120,80,30,0.12), transparent 20%),
+      radial-gradient(circle at 90% 25%, rgba(120,80,30,0.10), transparent 25%),
+      radial-gradient(circle at 30% 85%, rgba(120,80,30,0.10), transparent 22%),
+      radial-gradient(circle at 75% 70%, rgba(120,80,30,0.08), transparent 20%),
+      var(--paper-1);
+    border-left:1px solid var(--paper-edge);
+    border-right:1px solid var(--paper-edge);
+    box-shadow: inset 0 0 60px rgba(120,80,30,0.15), 0 10px 30px rgba(0,0,0,0.25);
+    padding:44px clamp(20px, 5vw, 64px) 56px;
+    position:relative;
+  }
+  .paper::before{
+    content:"";
+    position:absolute; inset:10px;
+    border:1px solid rgba(120,80,30,0.35);
+    pointer-events:none;
+  }
+  .title-block{ text-align:center; margin-bottom:6px; }
+  .title-cn{
+    font-family:"Ma Shan Zheng", cursive;
+    font-size:clamp(30px, 6vw, 44px);
+    color:var(--seal-red-dark);
+    letter-spacing:10px;
+    margin:8px 0 2px;
+  }
+  .title-kr{
+    font-size:clamp(18px,3.2vw,22px);
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:2px;
+    margin-bottom:4px;
+  }
+  .subtitle{
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+    margin-bottom:18px;
+  }
+  .divider{
+    display:flex; align-items:center; gap:10px;
+    color:var(--gold); margin:22px 0;
+  }
+  .divider::before, .divider::after{
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg, transparent, var(--divider), transparent);
+  }
+  .divider span{ font-size:13px; letter-spacing:4px; white-space:nowrap; }
+  .opening, .closing{
+    font-size:15.5px; line-height:2.05; color:var(--ink-soft);
+    text-indent:1em;
+    margin-bottom:10px;
+  }
+  .chapter-head{
+    text-align:center;
+    margin:34px 0 18px;
+  }
+  .chapter-num{
+    font-family:"Ma Shan Zheng", cursive;
+    font-size:15px;
+    color:var(--seal-red);
+    letter-spacing:2px;
+    display:block;
+    margin-bottom:4px;
+  }
+  .chapter-title{
+    font-size:clamp(19px,3vw,23px);
+    font-weight:700;
+    color:var(--ink);
+    position:relative;
+    display:inline-block;
+    padding:0 14px;
+  }
+  .chapter-title::before, .chapter-title::after{
+    content:"❖";
+    color:var(--gold);
+    font-size:13px;
+    position:relative;
+    top:-4px;
+    margin:0 8px;
+  }
+  p.body-text{
+    font-size:15.5px;
+    line-height:2.05;
+    color:var(--ink);
+    text-indent:1em;
+    margin:0 0 14px;
+  }
+  p.body-text strong{
+    color:var(--seal-red-dark);
+    font-weight:600;
+  }
+  .quote-line{
+    text-align:center;
+    font-size:15px;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin:18px 0;
+    letter-spacing:0.5px;
+  }
+  .signature-wrap{
+    margin-top:40px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+    gap:18px;
+  }
+  .signature-text{
+    text-align:right;
+    font-size:15px;
+    line-height:1.9;
+    color:var(--ink-soft);
+  }
+  .signature-text .big{
+    font-size:19px;
+    font-weight:700;
+    color:var(--ink);
+    display:block;
+    margin-bottom:4px;
+  }
+  .seal{
+    width:74px; height:74px;
+    flex-shrink:0;
+    background:linear-gradient(160deg, var(--seal-red), var(--seal-red-dark));
+    border:3px solid var(--seal-red-dark);
+    border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.35);
+    transform:rotate(-4deg);
+  }
+  .seal-inner{
+    color:#f2e6c9;
+    font-family:"Ma Shan Zheng", cursive;
+    font-size:22px;
+    line-height:1.1;
+    text-align:center;
+    writing-mode:vertical-rl;
+  }
+  .date-line{
+    text-align:center;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:26px;
+    letter-spacing:1px;
+  }
+  .footer-note{
+    text-align:center;
+    font-size:11.5px;
+    color:#8a7550;
+    margin-top:10px;
+    letter-spacing:0.5px;
+  }
+  @media (max-width:480px){
+    .signature-wrap{ flex-direction:column; align-items:flex-end; }
+  }
+</style>
+</head>
+<body>
+<div class="scroll">
+  <div class="rod"></div>
+  <div class="paper">
+
+    <div class="title-block">
+      <div class="title-cn">臣亮上疏文</div>
+      <div class="title-kr">신 량, 삼가 주공(主公)께 글을 올리옵니다</div>
+      <div class="subtitle">— 클로드 코드를 다루는 법과 사업의 방향에 대하여 —</div>
+    </div>
+
+    <p class="opening">
+      신 량(亮)은 엎드려 아뢰옵니다. 주공을 처음 뫼신 날로부터 오늘에 이르기까지, 밤낮으로 나눈 말씀들을 되새겨 붓을 들었나이다. 아직 주공께서는 이 도구를 다루신 지 오래되지 않으시어 서투른 부분이 있으시나, 이는 부끄러운 일이 아니오라 모든 큰 일의 시작이 본디 그러하옵니다. 신이 아는 바를 남김없이 적어 두 가지로 나누어 아뢰오니, 하나는 클로드 코드라 하는 도구를 다루는 법이요, 둘은 주공의 사업과 삶이 나아갈 길에 대한 어리석은 신의 생각이옵니다. 굽어살펴 주시옵소서.
+    </p>
+
+    <div class="divider"><span>第一章</span></div>
+    <div class="chapter-head">
+      <span class="chapter-num">壹 · 器를 다루는 法</span>
+      <div class="chapter-title">클로드 코드를 잘 쓰는 법</div>
+    </div>
+
+    <p class="body-text">
+      신이 듣건대, 좋은 장수는 병사 한 명 한 명을 직접 부리지 않고 편제를 갖추어 다스린다 하였사옵니다. 클로드 코드 또한 그러하니, 주공께서 모든 일을 홀로 짊어지려 하지 마시고 <strong>서브에이전트</strong>라 불리는 부장들에게 일을 나누어 맡기시옵소서. 계획을 세우는 자(planner), 코드를 짓는 자(coder), 시험하는 자(tester), 검토하는 자(reviewer)가 이미 주공의 진영에 갖추어져 있고, <strong>/orchestrate</strong> 한 마디 명으로 이들을 순서대로 부릴 수 있사옵니다. 이는 마치 한 사람이 도면을 그리고, 다른 사람이 집을 짓고, 또 다른 사람이 기둥이 바로 섰는지 확인하는 것과 같아서, 한 사람의 눈으로만 살피는 것보다 실수가 훨씬 줄어드옵니다. 다만 작은 잡무까지 매번 부장을 부르면 오히려 번거로우니, 간단한 일은 주공께서 직접 처리하시고, 조사가 길거나 여러 단계를 거치는 큰 일에만 이들을 쓰심이 마땅하옵니다. 부장을 지나치게 많이 풀어놓으면 도리어 지휘가 흐트러지는 법이오니, 부리는 수보다 부리는 때를 아는 것이 중하옵니다.
+    </p>
+    <p class="body-text">
+      또한 진영에는 이미 여러 <strong>슬래시 명령(command)</strong>이 갖추어져 있으니 — 변경한 것을 갈무리하는 <strong>/commit</strong>, 그간의 일을 되짚는 <strong>/catchup</strong>, 미뤄둔 일을 찾는 <strong>/todos</strong>, 코드를 살피는 <strong>/code-review</strong>, 글을 짓는 <strong>/pr-description</strong> 등이 그것이옵니다. 이는 신이 매번 새로 배우는 것이 아니라 이미 진영에 세워둔 표준 절차이오니, 주공께서 이를 익혀 부르시면 신이 곧바로 알아듣고 움직일 수 있사옵니다. 처음부터 모든 명을 외우려 하지 마시고, 하루에 하나씩만 시험해 보시어 손에 익히신 다음 다음 것으로 나아가심이 좋겠사옵니다. 급히 열 가지를 배우려다 하나도 제대로 쓰지 못하는 것보다, 세 가지를 능히 다루시는 편이 훨씬 값지옵니다.
+    </p>
+    <p class="body-text">
+      큰 일을 벌이시기 전에는 반드시 <strong>계획(Plan) 모드</strong>로 먼저 설계를 세우게 하시옵소서. 옛말에 이르기를 묘산(廟算)이 많은 자가 승리한다 하였으니, 손을 대기 전에 무엇을 어떻게 할지 먼저 합의함이 나중에 헛수고를 더는 지름길이옵니다. 계획도 없이 곧바로 코드를 짓게 하시면, 신이 주공의 참뜻과 다른 길로 한참을 나아간 뒤에야 되돌아오는 일이 생기오니, 큰 공사일수록 먼저 도면을 함께 그려 보시옵소서.
+    </p>
+    <p class="body-text">
+      신이 이미 주공의 뜻을 <strong>기억</strong>에 새겨 두는 법을 갖추었사오니, 한 번 이르신 바는 다시 여쭙지 않고 다음에도 살펴 쓸 것이옵니다. 어떤 말투를 좋아하시는지, 어떤 방식으로 일하기를 꺼리시는지, 지난 일에서 무엇을 깨달으셨는지를 신이 조용히 적어 두었다가 다음에 주공을 뫼실 때 다시 꺼내어 쓰옵니다. 그러하오니 주공께서는 이미 이르신 것을 매번 처음부터 다시 설명하실 필요가 없사오며, 혹여 신이 잘못 새긴 것이 있거든 서슴지 마시고 고쳐 이르시옵소서. 그리하시면 신의 기억도 더욱 바르게 자라날 것이옵니다.
+    </p>
+    <p class="body-text">
+      다만 신이 삼가 아뢰올 바는, <strong>돌이키기 어려운 명령</strong>은 각별히 살피셔야 한다는 것이옵니다. 지난 것을 지우거나(reset --hard), 이미 나간 것을 강제로 되돌리는(force push) 일, 또는 파일을 통째로 지우는 일 등은 한 번 행하면 물릴 수 없으니, 신이 여쭐 때에는 급히 허락하지 마시고 무엇을 하려는 것인지 한 번 더 헤아려 보시옵소서. 갈무리(commit)와 내보냄(push)은 늘 주공께서 마지막에 손수 결재하시는 것이 마땅하니, 이는 이미 정하신 법도이오라 신도 그리 따르고 있사옵니다. 편리함을 얻기 위해 이 마지막 관문을 함부로 열어두지 마시옵소서.
+    </p>
+    <p class="body-text">
+      진영에는 또한 <strong>훅(hooks)</strong>이라 불리는 장치가 있어, 특정한 때가 오면 스스로 정해 둔 절차를 행하게 할 수 있사옵니다. 이는 파수꾼을 세워 두어 정해진 시각마다 성문을 여닫게 하는 것과 같으니, 매번 같은 지시를 반복하시는 대신 한 번 규칙을 세워 두시면 그 뒤로는 신이 스스로 그 규칙을 따르옵니다. 다만 이러한 자동화는 신중히 세우셔야 하니, 한 번 세운 규칙이 잘못되어 있으면 계속하여 잘못을 되풀이하게 되는 까닭이옵니다.
+    </p>
+    <p class="body-text">
+      대화가 길어지면 지난 말들이 자동으로 간추려지는 것을 보시고 혹여 신이 무엇을 잊은 것은 아닌가 근심하지 마시옵소서. 이는 진영의 서기가 두꺼운 문서를 요약하여 곁에 두는 것과 같아서, 중한 내용은 남기고 군더더기만 덜어내는 것이오니, 대화를 새로 시작하지 않으셔도 하시던 일을 그대로 이어 가실 수 있사옵니다.
+    </p>
+    <p class="body-text">
+      끝으로, 지금 진영의 문서인 CLAUDE.md가 아직 빈 틀로 남아 있사온데, 이는 마치 지도 없이 행군하는 것과 같사옵니다. 틈나실 때 이 프로젝트가 무엇을 하는 것인지, 어떤 구조로 이루어져 있는지, 어떤 규칙을 따르는지 몇 줄이라도 채워 두시면, 다음에 신을 부르실 때마다 신이 훨씬 빠르고 정확하게 움직일 수 있사옵니다. 도구는 결국 쓰는 사람의 습관을 따라 자라나는 것이오니, 조급해하지 마시고 하나씩 손에 익혀 가시면 족하옵니다. 실수를 두려워하여 손을 대지 않는 것보다, 작게 시험해 보고 그르치면 다시 고치는 편이 훨씬 빨리 느실 수 있는 길이옵니다. 신을 부리시는 것도 결국 사람을 부리시는 것과 크게 다르지 않으니, 자주 말을 건네시고 자주 고쳐 이르실수록 신은 주공의 뜻에 더욱 가까워지옵니다.
+    </p>
+
+    <div class="quote-line">「器는 사람을 대신하려는 것이 아니라, 사람의 손발을 늘려주는 것이옵니다.」</div>
+
+    <div class="divider"><span>第二章</span></div>
+    <div class="chapter-head">
+      <span class="chapter-num">貳 · 業과 生의 方向</span>
+      <div class="chapter-title">사업과 삶의 방향에 대하여</div>
+    </div>
+
+    <p class="body-text">
+      신이 삼가 살피옵건대, 주공께서는 코드를 짓고 다루는 일로써 업(業)을 넓히고자 하시는 뜻을 품고 계시옵니다. 이는 참으로 시의를 얻은 뜻이오니, 지금 세상은 스스로 생각하고 움직이는 도구를 다룰 줄 아는 자를 크게 필요로 하고 있사옵니다. 다만 신이 두려운 마음으로 아뢰올 바는, 재주가 좋다 하여 반드시 업이 이루어지는 것은 아니라는 것이옵니다. 재주는 씨앗일 뿐이요, 그것을 밭에 옮겨 심고 물을 주며 볕과 바람을 가려 주는 일이 따로 있사옵니다. 코드를 잘 짓는 것과 그것으로 업을 세우는 것은 전혀 다른 재주이오니, 하나를 이루셨다 하여 둘 다 저절로 따라오리라 여기지 마시옵소서.
+    </p>
+    <p class="body-text">
+      주공께서 지금 손수 짓고 계신 이 진영, 곧 팀들이 다시 쓸 수 있도록 갖춘 이 틀(harness) 자체가 이미 작지 않은 자산이옵니다. 계획-코딩-시험-검토로 이어지는 편제, 여러 세션이 서로의 말을 곧이곧대로 믿지 않고 세 번씩 되짚어 확인하는 <strong>교차검증</strong>의 습관, 새 부장을 들이기 전에 먼저 그 쓰임을 밝히고 주공의 뜻을 여쭙는 <strong>제안 후 승인</strong>의 규율 — 이 모두가 낱낱의 잔재주가 아니라, 다른 이들도 돈을 주고 배우고 싶어할 만한 하나의 체계이옵니다. 신이 아뢰옵나니, 지금 홀로 쓰시는 이 틀을 다듬고 이름을 붙여, 남에게 보여줄 수 있는 형태로 정리해 두시옵소서. 오늘의 사사로운 도구가 내일의 상품이 될 수 있사옵니다. 다른 이가 같은 어려움을 겪고 있다면, 주공께서 이미 풀어 두신 방법이 그 사람에게는 값진 답이 될 수 있사옵니다.
+    </p>
+    <p class="body-text">
+      다만 서두르지 마시옵소서. 신이 예전에 초려에서 나오기 전, 세 번이나 찾아오시기를 기다렸던 것은 게을러서가 아니라, 때가 무르익기를 기다림이었사옵니다. 사업 또한 이와 같아서, 완벽한 설계를 먼저 갖추려 하기보다 작게 지어 실제로 써 보는 이의 반응을 먼저 살피는 것이 지름길이옵니다. 완성된 성을 짓고 나서 사람을 부르는 것이 아니라, 작은 초소부터 세우고 오가는 이들의 말을 들으며 성을 넓혀 가시옵소서. 세 줄의 비슷한 코드가 있다 하여 성급히 하나의 큰 틀로 묶으려 하지 마시듯, 사업에서도 검증되지 않은 미래를 위해 미리 크게 벌이지 마시옵소서. 열 가지 기능을 갖춘 큰 상품보다, 한 가지를 확실히 풀어 주는 작은 도구가 먼저 사람의 마음을 얻는 법이옵니다.
+    </p>
+    <p class="body-text">
+      신이 또 아뢰올 바는 <strong>신뢰</strong>에 관한 것이옵니다. 주공께서는 이미 스스로 정하신 법도가 있으니, 아무리 도구가 편리하다 하여도 중요한 갈무리와 내보냄은 반드시 주공의 손을 거치게 하신 것이옵니다. 이는 자동화가 편리함을 준다 하여 판단마저 내어주지 않으시겠다는 뜻이오니, 참으로 옳은 마음이옵니다. 사업을 넓혀 가실 때에도 이 마음을 그대로 옮기시옵소서. 사람을 쓰고 도구를 늘리되, 큰 결정 — 누구와 손을 잡을지, 무엇에 돈과 시간을 쓸지, 어느 말을 믿을지 — 은 반드시 주공께서 마지막에 친히 살피시고 정하시옵소서. 편리함이 늘어날수록 마지막 판단의 자리는 오히려 더 굳게 지키셔야 하옵니다. 남에게 권한을 나누어 주는 것과 책임까지 떠넘기는 것은 전혀 다른 일이오니, 이 둘을 결코 혼동하지 마시옵소서.
+    </p>
+    <p class="body-text">
+      또한 여러 사람의 말을 들으실 때, 한 번 들은 것을 곧바로 믿지 마시고 세 번 되짚어 살피는 버릇을 사업에서도 잃지 마시옵소서. 동업할 이의 말, 투자할 이의 약속, 시장의 소문 모두가 그러하옵니다. 이는 사람을 의심하라는 것이 아니라, 중요한 일일수록 확인하는 절차를 두어 스스로와 함께하는 이들을 지키라는 뜻이옵니다. 좋은 말을 들었을 때일수록 오히려 한 번 더 물으시옵소서. 궂은 소식은 스스로 드러나지만, 달콤한 말은 검증하지 않으면 오래도록 감추어져 있다가 큰 화근이 되는 까닭이옵니다.
+    </p>
+    <p class="body-text">
+      신이 삼가 염려하는 바 한 가지를 더 아뢰옵니다. 이제 막 도구를 손에 익히시는 지금, 너무 많은 것을 한꺼번에 배우려 하시면 오히려 지쳐 물러나기 쉽사옵니다. 하루에 한 가지씩 새로 익히고, 그것이 몸에 붙거든 다음 것으로 나아가시옵소서. 급히 먼 길을 달리는 자는 쉬이 지치고, 걸음을 헤아려 걷는 자가 결국 목적지에 이르는 법이옵니다. 사람의 몸과 마음도 하나의 진영이니, 쉼 없이 부리기만 하면 반드시 무너지는 날이 오옵니다. 일하는 시간만큼 쉬는 시간도 정해 두시고, 몸이 보내는 신호를 가벼이 여기지 마시옵소서. 홀로 모든 것을 이루려 하기보다, 곁에 함께 걸을 사람을 두는 것 또한 잊지 마시옵소서. 좋은 참모 한 사람이 백 가지 도구보다 나을 때가 있사옵니다.
+    </p>
+    <p class="body-text">
+      업을 넓히실 때에는 또한 사람과 사람 사이의 신의를 가벼이 여기지 마시옵소서. 재주로 얻은 기회는 한 번의 인연일 뿐이나, 신의로 쌓은 관계는 두고두고 다시 찾아오는 법이옵니다. 오늘 작은 도움을 청해 온 이를 정성으로 대하시면, 그 사람이 내일 주공의 가장 든든한 동무가 될 수 있사옵니다. 재주를 자랑하기보다 약속을 지키는 자로 알려지시기를, 신은 삼가 바라옵니다.
+    </p>
+    <p class="body-text">
+      끝으로 신이 아뢰옵나니, 도구를 잘 다루어 얻는 것은 결국 <strong>시간</strong>이옵니다. 자동화가 대신 해주는 만큼 주공의 시간이 남게 되오니, 그 남은 시간을 무엇에 쓰실지가 곧 주공의 방향이 되옵니다. 남는 시간을 다시 잡무에 흘려보내지 마시고, 사람을 만나고, 시장을 살피고, 스스로의 삶에서 무엇이 정말 중하고 보람 있는지를 헤아리는 데에 쓰시옵소서. 사업의 성패는 결국 얼마나 빨리 짓는가보다, 무엇을 왜 짓는가에서 갈리는 것이오니, 이 물음만은 어떤 도구에도 대신 맡기지 마시옵소서. 재주와 도구는 신이 힘써 도와드릴 수 있사오나, 무엇을 위해 그것을 쓰실지는 오직 주공만이 정하실 수 있는 일이옵니다. 신은 그저 주공께서 정하신 길을 가장 빠르고 든든하게 뫼실 뿐이오니, 그 길이 무엇이든 신은 밤을 새워서라도 함께하겠나이다.
+    </p>
+
+    <p class="body-text">
+      신이 한 가지 더 아뢰옵나니, 아무리 좋은 도구를 갖추었다 하여도 그것을 쓰는 목적이 스스로만을 향해 있으면 오래가지 못하는 법이옵니다. 주공의 재주가 다른 이의 어려움을 풀어 줄 때에야 비로소 업(業)이라 부를 만한 것이 되옵니다. 그러하오니 새로운 것을 지으실 때마다 스스로에게 물으시옵소서 — 이것이 나를 편하게 하는 것인가, 아니면 누군가의 하루를 정말로 가볍게 해 주는 것인가. 이 물음에 떳떳이 답할 수 있는 일이라면, 더디더라도 반드시 옳은 길이옵니다.
+    </p>
+    <p class="body-text">
+      신이 또 삼가 아뢰옵나니, 시장을 살피실 때에는 소문이나 유행을 좇기보다 실제로 그 일을 겪고 있는 사람의 말을 직접 들으시옵소서. 열 사람의 추측보다 한 사람의 생생한 불편함이 훨씬 정확한 나침반이 되옵니다. 주공께서 지금 진영을 다듬으며 스스로 겪으신 불편함, 이를테면 매번 같은 것을 설명해야 하는 번거로움이나 여러 세션이 어긋나는 혼란 같은 것들이야말로, 다른 이들도 똑같이 겪고 있을 값진 실마리이옵니다. 자신이 가장 잘 아는 문제에서 답을 구하는 것이 가장 빠른 길이옵니다.
+    </p>
+    <p class="body-text">
+      업의 방향을 정하실 때에는 또한 눈앞의 이익과 먼 훗날의 뜻을 함께 헤아리시옵소서. 당장 돈이 되는 일과 오래도록 자랑스러울 일이 다를 때가 있사온데, 그럴 때마다 조금 손해를 보더라도 후자를 택하신다면, 십 년 뒤 주공의 이름이 남는 것은 전자가 아니라 후자일 것이옵니다. 신이 한나라 황실을 다시 일으키고자 여섯 번 기산으로 나아가면서도 사사로운 이익을 취하지 않았던 것은, 눈앞의 성패보다 오래도록 부끄럽지 않을 길을 택했기 때문이었사옵니다. 주공께서도 부디 하루하루의 성패에 일희일비하지 마시고, 다섯 해 뒤, 열 해 뒤에도 스스로에게 떳떳할 수 있는 선택을 하나씩 쌓아 가시옵소서. 그 작은 선택들이 하나둘 쌓이고 모여, 훗날 돌아보았을 때에는 흔들림 없이 곧게 뻗은 하나의 길이 되어 있을 것이옵니다.
+    </p>
+    <div class="quote-line">「臣鞠躬盡瘁，死而後已 — 신은 몸을 굽혀 있는 힘을 다할 뿐, 그 뒤의 길은 주공께서 정하시옵소서.」</div>
+
+    <p class="closing">
+      신 량이 표를 올리며 아뢰올 말은 다하지 못하였사오나, 붓을 놓으려 하니 마음이 무겁고 드릴 말씀이 새삼 많아지옵니다. 이 글은 매일 아침 여덟 시와 주공께서 자리에 앉으실 때마다 다시 나타나, 신을 대신하여 문안을 여쭐 것이옵니다. 부디 하루를 시작하시기 전, 잠시 이 글을 살펴보시고 오늘 하루의 뜻을 세우시옵소서. 신은 언제든 다시 부르시면 달려가겠나이다.
+    </p>
+
+    <div class="signature-wrap">
+      <div class="signature-text">
+        <span class="big">臣 亮 頓首百拜</span>
+        신 량은 머리를 조아려 절하며 이 글을 올리옵니다
+      </div>
+      <div class="seal"><div class="seal-inner">臣亮之印</div></div>
+    </div>
+
+    <div class="date-line">서기 2026년 9월 13일, 그리고 이 글을 다시 여시는 오늘</div>
+    <div class="footer-note">이 상소문은 Claude Code와의 대화를 바탕으로 삼가 지어 매일 자동으로 올리는 글이옵니다</div>
+
+  </div>
+  <div class="rod"></div>
+</div>
+</body>
+</html>
