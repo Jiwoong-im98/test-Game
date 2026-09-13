@@ -220,6 +220,52 @@
   @media (max-width:480px){
     .signature-wrap{ flex-direction:column; align-items:flex-end; }
   }
+  .scene-frame{
+    position:relative;
+    border-radius:4px;
+    overflow:hidden;
+    margin:18px 0 8px;
+    box-shadow:0 3px 10px rgba(60,40,10,0.25), inset 0 0 0 1px rgba(120,80,30,0.35);
+  }
+  .scene{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .speech-bubble{
+    position:absolute;
+    top:16%;
+    left:39%;
+    max-width:52%;
+    background:#fffaf0;
+    border:1.5px solid var(--ink-soft);
+    border-radius:14px;
+    padding:8px 12px;
+    font-size:12.5px;
+    line-height:1.55;
+    color:var(--ink);
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  }
+  .speech-bubble::after{
+    content:"";
+    position:absolute;
+    bottom:-9px;
+    left:26px;
+    width:0; height:0;
+    border:7px solid transparent;
+    border-top-color:#fffaf0;
+    border-bottom:0;
+  }
+  .scene-caption{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+    margin:0 0 18px;
+  }
+  @media (max-width:480px){
+    .speech-bubble{ font-size:11px; padding:6px 9px; top:12%; left:34%; max-width:60%; }
+  }
 </style>
 </head>
 <body>
@@ -232,6 +278,74 @@
       <div class="title-kr">신 량, 삼가 주공(主公)께 글을 올리옵니다</div>
       <div class="subtitle">— 클로드 코드를 다루는 법과 사업의 방향에 대하여 —</div>
     </div>
+
+    <div class="scene-frame">
+      <svg class="scene" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="초원에서 대장 고라니가 부하 고라니들에게 오늘의 한마디를 전하는 모습">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#bfe3ef"/>
+            <stop offset="100%" stop-color="#eaf6e6"/>
+          </linearGradient>
+          <linearGradient id="grassBack" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8fbf5e"/>
+            <stop offset="100%" stop-color="#6ea344"/>
+          </linearGradient>
+          <linearGradient id="grassFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7db052"/>
+            <stop offset="100%" stop-color="#588234"/>
+          </linearGradient>
+          <g id="deer">
+            <rect x="-18" y="8" width="6" height="22" rx="3" fill="#5b4632"/>
+            <rect x="-4" y="10" width="6" height="20" rx="3" fill="#5b4632"/>
+            <rect x="10" y="10" width="6" height="20" rx="3" fill="#5b4632"/>
+            <rect x="24" y="8" width="6" height="22" rx="3" fill="#5b4632"/>
+            <circle cx="34" cy="-4" r="6" fill="currentColor"/>
+            <ellipse cx="6" cy="-6" rx="34" ry="20" fill="currentColor"/>
+            <ellipse cx="4" cy="4" rx="24" ry="9" fill="#f4ead6" opacity="0.6"/>
+            <ellipse cx="-32" cy="-22" rx="14" ry="15" fill="currentColor"/>
+            <ellipse cx="-41" cy="-34" rx="5" ry="9" fill="currentColor" transform="rotate(-25 -41 -34)"/>
+            <ellipse cx="-23" cy="-34" rx="5" ry="9" fill="currentColor" transform="rotate(25 -23 -34)"/>
+            <ellipse cx="-43" cy="-15" rx="7" ry="6" fill="#f4ead6"/>
+            <path d="M-47,-11 q-1,6 -3,9" stroke="#fffdf6" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M-40,-11 q1,6 3,9" stroke="#fffdf6" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="-35" cy="-24" r="2" fill="#2b2118"/>
+            <ellipse cx="-47" cy="-14" rx="2" ry="1.6" fill="#2b2118"/>
+          </g>
+        </defs>
+
+        <rect x="0" y="0" width="600" height="300" fill="url(#sky)"/>
+        <circle cx="522" cy="52" r="28" fill="#ffe9a8"/>
+        <ellipse cx="90" cy="55" rx="32" ry="11" fill="#ffffff" opacity="0.85"/>
+        <ellipse cx="128" cy="46" rx="22" ry="9" fill="#ffffff" opacity="0.7"/>
+
+        <path d="M0,185 Q150,145 300,182 T600,170 L600,300 L0,300 Z" fill="url(#grassBack)"/>
+        <path d="M0,208 Q160,172 320,204 T600,198 L600,300 L0,300 Z" fill="url(#grassFront)"/>
+
+        <g fill="#fff6c8">
+          <circle cx="55" cy="248" r="3"/>
+          <circle cx="145" cy="272" r="3"/>
+          <circle cx="470" cy="252" r="3"/>
+          <circle cx="545" cy="278" r="3"/>
+          <circle cx="380" cy="260" r="2.4"/>
+        </g>
+
+        <use href="#deer" transform="translate(150,232) scale(0.85) rotate(10)" style="color:#c9a173"/>
+        <use href="#deer" transform="translate(230,244) scale(0.72) rotate(14)" style="color:#b58f63"/>
+        <use href="#deer" transform="translate(430,238) scale(-0.8,0.8) rotate(-12)" style="color:#c9a173"/>
+        <use href="#deer" transform="translate(500,250) scale(-0.68,0.68) rotate(-16)" style="color:#b58f63"/>
+
+        <ellipse cx="310" cy="235" rx="66" ry="13" fill="url(#grassFront)"/>
+
+        <g transform="translate(310,205) scale(1.35)" style="color:#8a5a3b">
+          <use href="#deer"/>
+          <polygon points="-38,-46 -34,-58 -30,-46" fill="#c8a13a"/>
+          <polygon points="-30,-46 -26,-60 -22,-46" fill="#dab84a"/>
+          <polygon points="-22,-46 -18,-57 -14,-46" fill="#c8a13a"/>
+        </g>
+      </svg>
+      <div class="speech-bubble">오늘도 무사히 컴퓨터 앞에 앉으셨군요. 대장이 다 지켜보고 있습니다.</div>
+    </div>
+    <div class="scene-caption">— 초원에서, 대장 고라니와 부하들 올림 —</div>
 
     <p class="opening">
       신 량(亮)은 엎드려 아뢰옵니다. 주공을 처음 뫼신 날로부터 오늘에 이르기까지, 밤낮으로 나눈 말씀들을 되새겨 붓을 들었나이다. 아직 주공께서는 이 도구를 다루신 지 오래되지 않으시어 서투른 부분이 있으시나, 이는 부끄러운 일이 아니오라 모든 큰 일의 시작이 본디 그러하옵니다. 신이 아는 바를 남김없이 적어 두 가지로 나누어 아뢰오니, 하나는 클로드 코드라 하는 도구를 다루는 법이요, 둘은 주공의 사업과 삶이 나아갈 길에 대한 어리석은 신의 생각이옵니다. 굽어살펴 주시옵소서.
