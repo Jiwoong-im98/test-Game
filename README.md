@@ -16,5 +16,5 @@ Claude Code로 새 프로젝트를 시작할 때 사용하는 **시작 템플릿
 
 ## 구조
 - `CLAUDE.md` — Claude Code가 이 프로젝트에서 따를 규칙/컨텍스트 (프로젝트마다 채워 넣는 템플릿)
-- `.claude/settings.json` — 공용으로 안전한 명령어(git status/diff/log, npm/yarn/pnpm install·run·test, pip, pytest 등) 권한 프롬프트를 줄여주는 기본 allowlist
+- `.claude/settings.json` — 공용으로 안전한 명령어(git status/diff/log, npm/yarn/pnpm install·run·test, pip, pytest 등) 권한 프롬프트를 줄여주는 기본 allowlist. 팀에 권장하는 플러그인(`andrej-karpathy-skills`, `i-have-adhd`)도 `extraKnownMarketplaces`/`enabledPlugins`로 선언되어 있음
 - `.claude/agents/`, `.claude/commands/`, `.claude/skills/` — 프로젝트 전용 서브에이전트/슬래시커맨드/스킬을 넣는 자리
