@@ -9,7 +9,7 @@ harness_test는 특정 제품이 아니라, Claude Code로 새 프로젝트를 �
 실제 제품 개발에 이 템플릿을 clone해서 쓸 경우, 아래 세 섹션(구조/개발 명령어/컨벤션)은 그 프로젝트 내용에 맞게 새로 덮어쓴다 — 이 문서에 적힌 내용은 프로젝트별 기본값이지 고정 사양이 아니다.
 
 ## 구조
-- `.claude/agents/` — 서브에이전트 정의 (reviewer, debugger, doc-updater, planner, coder, tester)
+- `.claude/agents/` — 서브에이전트 정의 (reviewer, debugger, doc-updater, harness-auditor, planner, coder, tester)
 - `.claude/commands/` — 슬래시 커맨드 (`/commit`, `/catchup`, `/todos`, `/pr-description`, `/orchestrate`)
 - `.claude/skills/` — 프로젝트 전용 스킬 (`cross-verify` 등)
 - `.claude/settings.json` — 권한 allowlist + 팀 추천 플러그인(`extraKnownMarketplaces`/`enabledPlugins`) 선언

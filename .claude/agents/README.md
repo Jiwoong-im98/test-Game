@@ -6,6 +6,7 @@
 - `reviewer` — 읽기 전용, 코드 변경사항의 정확성/중복/효율성 이슈만 리뷰(수정은 안 함)
 - `debugger` — 실패하는 테스트/에러를 재현하고 근본 원인을 찾아 최소한의 수정 적용
 - `doc-updater` — 코드 변경 후 CLAUDE.md/README.md를 실제 상태에 맞게 갱신(새 문서 작성 X)
+- `harness-auditor` — 읽기 전용, 애플리케이션 코드가 아니라 하네스 자체(`.claude/settings.json`의 권한·hook·플러그인 선언, agents/commands/skills 정의, CLAUDE.md 정합성)를 점검(수정은 안 함)
 
 ## 오케스트레이션 파이프라인 에이전트
 `/orchestrate` 커맨드가 순서대로 지휘하는 4개 역할 (메인 에이전트가 각 단계 결과를 검증하며 다음 단계로 넘김):
