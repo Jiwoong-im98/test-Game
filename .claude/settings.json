@@ -11,6 +11,19 @@
     "andrej-karpathy-skills@karpathy-skills": true,
     "i-have-adhd@i-have-adhd": true
   },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -c \"import sys,json,subprocess as sp; d=json.load(sys.stdin); f=d.get('tool_response',{}).get('filePath') or d.get('tool_input',{}).get('file_path'); (sp.run(['black','-q',f]), sp.run(['ruff','check','--fix','-q',f])) if f and f.endswith('.py') else None\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(git status*)",
