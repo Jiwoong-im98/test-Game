@@ -11,6 +11,7 @@ from game.settings import (
     SCREEN_WIDTH,
     TILE_SIZE,
 )
+from game.world.room import generate_room, start_tile
 
 GRID_WIDTH = SCREEN_WIDTH // TILE_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // TILE_SIZE
@@ -36,31 +37,28 @@ class Game:
         pygame.display.set_caption("test-game")
         self.clock = pygame.time.Clock()
         self.running = True
-        self.player = Player(GRID_WIDTH // 2, GRID_HEIGHT // 2)
+        self.floor_tiles = generate_room(GRID_WIDTH, GRID_HEIGHT)
+        start_x, start_y = start_tile(GRID_WIDTH, GRID_HEIGHT)
+        self.player = Player(start_x, start_y)
 
     def run(self):
         """Run the main loop until quit."""
         while self.running:
             self._handle_events()
             self.screen.fill(COLOR_BACKGROUND)
-            self._draw_grid()
+            self._draw_floor()
             self.player.draw(self.screen)
             pygame.display.flip()
             self.clock.tick(FPS)
         pygame.quit()
 
-    def _draw_grid(self):
-        """Draw white grid lines separating every tile."""
-        for x in range(GRID_WIDTH + 1):
-            pos_x = x * TILE_SIZE
-            pygame.draw.line(
-                self.screen, COLOR_GRID_LINE, (pos_x, 0), (pos_x, SCREEN_HEIGHT)
+    def _draw_floor(self):
+        """Draw a white grid-line outline for each generated floor tile."""
+        for tile_x, tile_y in self.floor_tiles:
+            rect = pygame.Rect(
+                tile_x * TILE_SIZE, tile_y * TILE_SIZE, TILE_SIZE, TILE_SIZE
             )
-        for y in range(GRID_HEIGHT + 1):
-            pos_y = y * TILE_SIZE
-            pygame.draw.line(
-                self.screen, COLOR_GRID_LINE, (0, pos_y), (SCREEN_WIDTH, pos_y)
-            )
+            pygame.draw.rect(self.screen, COLOR_GRID_LINE, rect, 1)
 
     def _handle_events(self):
         for event in pygame.event.get():
