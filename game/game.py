@@ -5,6 +5,7 @@ import pygame
 from game.entities.player import Player
 from game.settings import (
     COLOR_BACKGROUND,
+    COLOR_GRID_LINE,
     FPS,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
@@ -42,10 +43,24 @@ class Game:
         while self.running:
             self._handle_events()
             self.screen.fill(COLOR_BACKGROUND)
+            self._draw_grid()
             self.player.draw(self.screen)
             pygame.display.flip()
             self.clock.tick(FPS)
         pygame.quit()
+
+    def _draw_grid(self):
+        """Draw white grid lines separating every tile."""
+        for x in range(GRID_WIDTH + 1):
+            pos_x = x * TILE_SIZE
+            pygame.draw.line(
+                self.screen, COLOR_GRID_LINE, (pos_x, 0), (pos_x, SCREEN_HEIGHT)
+            )
+        for y in range(GRID_HEIGHT + 1):
+            pos_y = y * TILE_SIZE
+            pygame.draw.line(
+                self.screen, COLOR_GRID_LINE, (0, pos_y), (SCREEN_WIDTH, pos_y)
+            )
 
     def _handle_events(self):
         for event in pygame.event.get():
