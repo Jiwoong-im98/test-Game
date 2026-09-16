@@ -4,24 +4,20 @@ Claude Code가 이 저장소에서 작업할 때 참고하는 가이드입니다
 이 파일은 harness_test 템플릿을 복제해서 새 프로젝트를 시작할 때마다 채워 넣습니다.
 
 ## 프로젝트 개요
-harness_test는 특정 제품이 아니라, Claude Code로 새 프로젝트를 시작할 때 복제해서 쓰는 **재사용 가능한 시작 템플릿**이다. 웹앱/백엔드/스크립트 등 프로젝트 성격과 무관하게 공용으로 쓸 설정(권한 allowlist, 서브에이전트, 슬래시커맨드, 추천 플러그인)만 담는다.
-
-실제 제품 개발에 이 템플릿을 clone해서 쓸 경우, 아래 세 섹션(구조/개발 명령어/컨벤션)은 그 프로젝트 내용에 맞게 새로 덮어쓴다 — 이 문서에 적힌 내용은 프로젝트별 기본값이지 고정 사양이 아니다.
+test-game은 턴제(turn-based)/타일 이동 기반의 픽셀아트 로그라이트 던전 크롤러다. 현재는 고정된 방 하나만 존재하며 절차적 생성(procedural generation)은 아직 구현하지 않았다.
 
 ## 구조
-- `.claude/agents/` — 서브에이전트 정의 (reviewer, debugger, doc-updater, harness-auditor, planner, coder, tester)
-- `.claude/commands/` — 슬래시 커맨드 (`/commit`, `/catchup`, `/todos`, `/pr-description`, `/orchestrate`)
-- `.claude/skills/` — 프로젝트 전용 스킬 (`cross-verify` 등)
-- `.claude/settings.json` — 권한 allowlist + 팀 추천 플러그인(`extraKnownMarketplaces`/`enabledPlugins`) 선언
-
-실제 프로젝트를 시작하면 여기에 `src/`, `tests/` 등 실제 코드 디렉토리 설명을 추가한다.
+- `main.py` — 엔트리 포인트: `Game` 인스턴스를 만들고 `game.run()` 호출
+- `game/__init__.py` — `game` 패키지
+- `game/game.py` — `Game` 클래스: 초기화(pygame.init, 디스플레이, 클록), 메인 루프(이벤트 처리/QUIT·ESC, 화면 클리어, flip, tick)
+- `game/settings.py` — 화면 크기, FPS, `TILE_SIZE`, 색상 팔레트 등 전역 상수
+- `assets/images/`, `assets/sounds/` — 이미지/사운드 에셋
+- `tests/` — pytest 테스트
 
 ## 개발 명령어
-템플릿 자체는 실행할 애플리케이션 코드가 없다. `.claude/settings.json`의 allowlist가 이미 다음 스택들의 기본 명령어를 안전 목록에 올려둠 — 실제 프로젝트가 어떤 스택을 쓰든 그대로 활용 가능:
-- Node 계열: `npm install/run/test`, `yarn install/run/test`, `pnpm install/run/test`
-- Python 계열: `pip install`, `pytest` / `python -m pytest`
-
-실제 빌드/배포 명령어가 생기면 여기에 구체적으로 적는다.
+- 의존성 설치: `pip install -e ".[dev]"`
+- 테스트: `pytest`
+- 게임 실행: `python main.py`
 
 ## 컨벤션
 기본 스택은 Python. 다른 언어로 프로젝트를 시작하면 이 항목들을 그 언어 관용에 맞게 다시 정한다.
