@@ -69,4 +69,4 @@ class Game:
                     self.running = False
                 elif event.key in MOVE_KEYS:
                     dx, dy = MOVE_KEYS[event.key]
-                    self.player.move(dx, dy, GRID_WIDTH, GRID_HEIGHT)
+                    self.player.move(dx, dy, self.floor_tiles)

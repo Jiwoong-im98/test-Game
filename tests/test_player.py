@@ -2,53 +2,56 @@
 
 from game.entities.player import Player
 
-GRID_WIDTH = 20
-GRID_HEIGHT = 15
+FLOOR_TILES = {(5, 5), (6, 5), (5, 6), (4, 5), (5, 4)}
 
 
-def test_move_up():
+def test_move_up_onto_floor():
     player = Player(5, 5)
-    player.move(0, -1, GRID_WIDTH, GRID_HEIGHT)
+    player.move(0, -1, FLOOR_TILES)
     assert (player.tile_x, player.tile_y) == (5, 4)
 
 
-def test_move_down():
+def test_move_down_onto_floor():
     player = Player(5, 5)
-    player.move(0, 1, GRID_WIDTH, GRID_HEIGHT)
+    player.move(0, 1, FLOOR_TILES)
     assert (player.tile_x, player.tile_y) == (5, 6)
 
 
-def test_move_left():
+def test_move_left_onto_floor():
     player = Player(5, 5)
-    player.move(-1, 0, GRID_WIDTH, GRID_HEIGHT)
+    player.move(-1, 0, FLOOR_TILES)
     assert (player.tile_x, player.tile_y) == (4, 5)
 
 
-def test_move_right():
+def test_move_right_onto_floor():
     player = Player(5, 5)
-    player.move(1, 0, GRID_WIDTH, GRID_HEIGHT)
+    player.move(1, 0, FLOOR_TILES)
     assert (player.tile_x, player.tile_y) == (6, 5)
 
 
-def test_clamp_left_edge():
-    player = Player(0, 5)
-    player.move(-1, 0, GRID_WIDTH, GRID_HEIGHT)
-    assert player.tile_x == 0
+def test_move_up_blocked_off_floor():
+    floor_tiles = {(5, 5), (6, 5), (5, 6)}
+    player = Player(5, 5)
+    player.move(0, -1, floor_tiles)
+    assert (player.tile_x, player.tile_y) == (5, 5)
 
 
-def test_clamp_right_edge():
-    player = Player(GRID_WIDTH - 1, 5)
-    player.move(1, 0, GRID_WIDTH, GRID_HEIGHT)
-    assert player.tile_x == GRID_WIDTH - 1
+def test_move_down_blocked_off_floor():
+    floor_tiles = {(5, 5), (6, 5), (5, 4)}
+    player = Player(5, 5)
+    player.move(0, 1, floor_tiles)
+    assert (player.tile_x, player.tile_y) == (5, 5)
 
 
-def test_clamp_top_edge():
-    player = Player(5, 0)
-    player.move(0, -1, GRID_WIDTH, GRID_HEIGHT)
-    assert player.tile_y == 0
+def test_move_left_blocked_off_floor():
+    floor_tiles = {(5, 5), (6, 5), (5, 6)}
+    player = Player(5, 5)
+    player.move(-1, 0, floor_tiles)
+    assert (player.tile_x, player.tile_y) == (5, 5)
 
 
-def test_clamp_bottom_edge():
-    player = Player(5, GRID_HEIGHT - 1)
-    player.move(0, 1, GRID_WIDTH, GRID_HEIGHT)
-    assert player.tile_y == GRID_HEIGHT - 1
+def test_move_right_blocked_off_floor():
+    floor_tiles = {(5, 5), (5, 6), (5, 4)}
+    player = Player(5, 5)
+    player.move(1, 0, floor_tiles)
+    assert (player.tile_x, player.tile_y) == (5, 5)

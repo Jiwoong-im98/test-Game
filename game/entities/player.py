@@ -12,10 +12,11 @@ class Player:
         self.tile_x = tile_x
         self.tile_y = tile_y
 
-    def move(self, dx: int, dy: int, grid_width: int, grid_height: int):
-        """Move by one tile in the given direction, clamped to the grid."""
-        self.tile_x = max(0, min(grid_width - 1, self.tile_x + dx))
-        self.tile_y = max(0, min(grid_height - 1, self.tile_y + dy))
+    def move(self, dx: int, dy: int, floor_tiles: set[tuple[int, int]]):
+        """Move by one tile if the destination is part of the floor."""
+        new_tile = (self.tile_x + dx, self.tile_y + dy)
+        if new_tile in floor_tiles:
+            self.tile_x, self.tile_y = new_tile
 
     def draw(self, surface):
         """Draw the player as a colored rectangle at its tile position."""
