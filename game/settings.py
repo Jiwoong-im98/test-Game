@@ -1,15 +1,20 @@
 """Global game settings and constants.
 
-Resolution: 640x480 with TILE_SIZE=32 gives an exact 20x15 tile grid,
-which keeps future tile-based room rendering simple (no partial tiles
-at the screen edges). Plain pixel values, no internal-surface scaling
-for now.
+Isometric ("quarter view") rendering: tiles are 64x32 diamonds
+(TILE_WIDTH x TILE_HEIGHT, standard 2:1 ratio). The fixed 20x15 tile
+grid, projected with tile_to_screen(), spans a diamond region of
+1120x560px (see game/iso.py); SCREEN_WIDTH/HEIGHT below add margin so
+no tile is clipped, and ISO_ORIGIN_X/Y center that diamond region in
+the window.
 """
 
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 600
 FPS = 60
-TILE_SIZE = 32
+TILE_WIDTH = 64
+TILE_HEIGHT = 32
+ISO_ORIGIN_X = 520
+ISO_ORIGIN_Y = 36
 
 # Colors (R, G, B)
 COLOR_BACKGROUND = (0, 0, 0)

@@ -2,7 +2,10 @@
 
 import pygame
 
-from game.settings import COLOR_PLAYER, TILE_SIZE
+from game.iso import diamond_points, tile_to_screen
+from game.settings import COLOR_PLAYER, TILE_HEIGHT, TILE_WIDTH
+
+PLAYER_SCALE = 0.6
 
 
 class Player:
@@ -18,9 +21,15 @@ class Player:
         if new_tile in floor_tiles:
             self.tile_x, self.tile_y = new_tile
 
-    def draw(self, surface):
-        """Draw the player as a colored rectangle at its tile position."""
-        rect = pygame.Rect(
-            self.tile_x * TILE_SIZE, self.tile_y * TILE_SIZE, TILE_SIZE, TILE_SIZE
+    def draw(self, surface, origin_x: int, origin_y: int):
+        """Draw the player as a filled diamond, inset within its tile."""
+        center_x, center_y = tile_to_screen(
+            self.tile_x, self.tile_y, origin_x, origin_y
         )
-        pygame.draw.rect(surface, COLOR_PLAYER, rect)
+        points = diamond_points(
+            center_x,
+            center_y,
+            int(TILE_WIDTH * PLAYER_SCALE),
+            int(TILE_HEIGHT * PLAYER_SCALE),
+        )
+        pygame.draw.polygon(surface, COLOR_PLAYER, points)
